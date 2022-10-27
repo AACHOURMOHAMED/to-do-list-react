@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { FaTrash } from 'react-icons/fa';
+import Proptypes from 'prop-types';
 import styles from './TodoItem.module.css';
 
 const TodoItem = ({
@@ -62,4 +63,16 @@ const TodoItem = ({
   );
 };
 
+TodoItem.propTypes = {
+  todo: Proptypes.shape({
+    completed: Proptypes.bool.isRequired,
+    id: Proptypes.number.isRequired,
+    title: Proptypes.string.isRequired,
+  }).isRequired,
+  handleChangeProps: Proptypes.func.isRequired,
+  deleteTodoProps: Proptypes.func.isRequired,
+  setUpdate: Proptypes.func.isRequired,
+};
+
 export default TodoItem;
+
