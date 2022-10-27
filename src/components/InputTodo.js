@@ -2,8 +2,9 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import { FaPlusCircle } from 'react-icons/fa';
+import Proptypes from 'prop-types';
 
-const InputTodo = (props) => {
+const InputTodo = ({ addTodoProps }) => {
   const [inputText, setInputText] = useState({
     title: '',
   });
@@ -18,7 +19,7 @@ const InputTodo = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputText.title.trim()) {
-      props.addTodoProps(inputText.title);
+      addTodoProps(inputText.title);
       setInputText({
         title: '',
       });
@@ -40,6 +41,10 @@ const InputTodo = (props) => {
       </button>
     </form>
   );
+};
+
+InputTodo.propTypes = {
+  addTodoProps: Proptypes.func.isRequired,
 };
 
 export default InputTodo;
